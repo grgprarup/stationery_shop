@@ -46,6 +46,26 @@ This Flutter application serves as an inventory management system for a statione
     ```bash
     flutter pub outdated --major-versions
     ```
+- To see the list of devices connected
+    ```bash
+    flutter devices
+    ```
+- To see the list of emulators
+    ```bash
+    flutter emulators
+    ```
+- To run the application on a specific emulator
+    ```bash
+    flutter emulators --launch emulator_id
+    ```
+- To create a new emulator
+    ```bash
+    flutter emulators --create [--name xyz]
+    ```
+- To run the application on a specific device
+    ```bash
+    flutter run -d device_id
+    ```
 - To create a new flutter project from CLI
     ```bash
     flutter create project_name
