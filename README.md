@@ -3,6 +3,32 @@
 ## Introduction
 This Flutter application serves as an inventory management system for a stationery shop. It allows users to add, update, and delete items from the inventory, as well as track stock levels and generate reports. The application is built using the Dart language and the Flutter framework, providing a user-friendly interface for easy navigation and management of the stationery shop inventory.
 
+## Features
+### 1. User Authentication:
+- Implement a secure authentication system to control access to the inventory. 
+- Include user roles such as admin, staff, etc.
+### 2. Product Management:
+- Allow users to add new products with details like name, category, price, and quantity.
+- Implement the ability to edit or delete existing products.
+### 3. Inventory Tracking:
+- Display the current stock levels for each product.
+- Set up alerts for low stock levels to avoid running out of essential items.
+### 4. Search and Filters:
+- Implement a robust search functionality to find products quickly.
+- Include filters for categories, suppliers, and other relevant parameters.
+### 5. Dashboard:
+- Create a user-friendly dashboard displaying key information. 
+- Include graphs or charts to visualize inventory trends.
+### 6. Reporting:
+- Generate reports on sales, stock levels, and other relevant metrics.
+- Allow users to export reports in common formats.
+### 7. Order Management:
+- Provide a feature for creating and managing customer orders.
+- Include order status (pending, shipped, delivered) and tracking.
+### 8. Supplier Management:
+- Keep track of suppliers and their contact information.
+- Link products to specific suppliers for easy reordering.
+
 ## Getting Started
 ### Prerequisites
 - Flutter SDK - [Install from here](https://docs.flutter.dev/get-started/install/linux)
