@@ -1,5 +1,5 @@
 name: stationery_shop
-description: A new Flutter project.
+description: This Flutter application is an inventory management system for a stationery shop, enabling users to add, update, and delete items, track stock levels, and generate reports. Built with Dart and Flutter, it offers a user-friendly interface for seamless inventory management.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
