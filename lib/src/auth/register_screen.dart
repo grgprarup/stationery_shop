@@ -12,8 +12,6 @@ class RegisterScreen extends StatefulWidget {
 class _RegisterScreenState extends State<RegisterScreen> {
   bool _isPasswordVisible = false;
   bool _isConfirmPasswordVisible = false;
-  bool _isLongPressed = false;
-  bool _isConfirmLongPressed = false;
 
   @override
   Widget build(BuildContext context) {
@@ -60,29 +58,25 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 suffixIcon: GestureDetector(
                   onLongPress: () {
                     setState(() {
-                      _isLongPressed = true;
+                      _isPasswordVisible = true;
                     });
                   },
                   onLongPressUp: () {
                     setState(() {
-                      _isLongPressed = false;
+                      _isPasswordVisible = false;
                     });
                   },
                   child: IconButton(
                     icon: Icon(
-                      _isPasswordVisible || _isLongPressed
+                      _isPasswordVisible
                           ? Icons.visibility
                           : Icons.visibility_off,
                     ),
-                    onPressed: () {
-                      setState(() {
-                        _isPasswordVisible = !_isPasswordVisible;
-                      });
-                    },
+                    onPressed: () {},
                   ),
                 ),
               ),
-              obscureText: !_isPasswordVisible && !_isLongPressed,
+              obscureText: !_isPasswordVisible,
             ),
             const SizedBox(height: 16.0),
             TextFormField(
@@ -93,29 +87,25 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 suffixIcon: GestureDetector(
                   onLongPress: () {
                     setState(() {
-                      _isConfirmLongPressed = true;
+                      _isConfirmPasswordVisible = true;
                     });
                   },
                   onLongPressUp: () {
                     setState(() {
-                      _isConfirmLongPressed = false;
+                      _isConfirmPasswordVisible = false;
                     });
                   },
                   child: IconButton(
                     icon: Icon(
-                      _isConfirmPasswordVisible || _isConfirmLongPressed
+                      _isConfirmPasswordVisible
                           ? Icons.visibility
                           : Icons.visibility_off,
                     ),
-                    onPressed: () {
-                      setState(() {
-                        _isConfirmPasswordVisible = !_isConfirmPasswordVisible;
-                      });
-                    },
+                    onPressed: () {},
                   ),
                 ),
               ),
-              obscureText: !_isConfirmPasswordVisible && !_isConfirmLongPressed,
+              obscureText: !_isConfirmPasswordVisible,
             ),
             const SizedBox(height: 16.0),
             Align(

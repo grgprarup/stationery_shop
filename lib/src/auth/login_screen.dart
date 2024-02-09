@@ -50,17 +50,25 @@ class _LoginScreenState extends State<LoginScreen> {
                 labelText: 'Password',
                 border: const OutlineInputBorder(),
                 prefixIcon: const Icon(Icons.lock),
-                suffixIcon: IconButton(
-                  icon: Icon(
-                    _isPasswordVisible
-                        ? Icons.visibility
-                        : Icons.visibility_off,
-                  ),
-                  onPressed: () {
+                suffixIcon: GestureDetector(
+                  onLongPress: () {
                     setState(() {
-                      _isPasswordVisible = !_isPasswordVisible;
+                      _isPasswordVisible = true;
                     });
                   },
+                  onLongPressUp: () {
+                    setState(() {
+                      _isPasswordVisible = false;
+                    });
+                  },
+                  child: IconButton(
+                    icon: Icon(
+                      _isPasswordVisible
+                          ? Icons.visibility
+                          : Icons.visibility_off,
+                    ),
+                    onPressed: () {},
+                  ),
                 ),
               ),
               obscureText: !_isPasswordVisible,
