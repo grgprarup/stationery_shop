@@ -10,13 +10,15 @@ class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key, required this.apiService});
 
   @override
-  _RegisterScreenState createState() => _RegisterScreenState(apiService: apiService);
+  _RegisterScreenState createState() =>
+      _RegisterScreenState(apiService: apiService);
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
   ApiService apiService;
 
   _RegisterScreenState({required this.apiService});
+
   bool _isPasswordVisible = false;
   bool _isConfirmPasswordVisible = false;
 
@@ -26,14 +28,39 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final TextEditingController _confirmPasswordController =
       TextEditingController();
 
-  void _registerUser() {
+  Future<ApiResponse> _registerUser() async {
     final user = User(
       fullName: _fullNameController.text,
       username: _usernameController.text,
       password: _passwordController.text,
       confirmPassword: _confirmPasswordController.text,
     );
-    widget.apiService.registerUser(user);
+    ApiResponse apiResponse = await widget.apiService.registerUser(user);
+    return apiResponse;
+  }
+
+  void _onRegistrationSuccess(BuildContext context) {
+    _registerUser().then((apiResponse) {
+      if (apiResponse.success) {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => LoginScreen(apiService: apiService),
+          ),
+        );
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(apiResponse.message),
+          ),
+        );
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(apiResponse.message),
+          ),
+        );
+      }
+    });
   }
 
   @override
@@ -140,7 +167,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               child: FractionallySizedBox(
                 widthFactor: 0.35,
                 child: ElevatedButton(
-                  onPressed: _registerUser,
+                  onPressed: () => _onRegistrationSuccess(context),
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all<Color>(
                       const Color(0xFF19B0E7),
@@ -169,7 +196,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => LoginScreen(apiService: apiService)),
+                          builder: (context) =>
+                              LoginScreen(apiService: apiService)),
                     );
                   },
                   child: const Text(
