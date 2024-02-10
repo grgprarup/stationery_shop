@@ -1,17 +1,40 @@
 import 'package:flutter/material.dart';
+import 'package:stationery_shop/src/services/api_service.dart';
 
+import '../models/user.dart';
 import 'login_screen.dart';
 
 class RegisterScreen extends StatefulWidget {
-  const RegisterScreen({super.key});
+  final ApiService apiService;
+
+  const RegisterScreen({super.key, required this.apiService});
 
   @override
-  _RegisterScreenState createState() => _RegisterScreenState();
+  _RegisterScreenState createState() => _RegisterScreenState(apiService: apiService);
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
+  ApiService apiService;
+
+  _RegisterScreenState({required this.apiService});
   bool _isPasswordVisible = false;
   bool _isConfirmPasswordVisible = false;
+
+  final TextEditingController _fullNameController = TextEditingController();
+  final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _confirmPasswordController =
+      TextEditingController();
+
+  void _registerUser() {
+    final user = User(
+      fullName: _fullNameController.text,
+      username: _usernameController.text,
+      password: _passwordController.text,
+      confirmPassword: _confirmPasswordController.text,
+    );
+    widget.apiService.registerUser(user);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +58,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             ),
             const SizedBox(height: 48.0),
             TextFormField(
+              controller: _fullNameController,
               decoration: const InputDecoration(
                 labelText: 'Full Name',
                 border: OutlineInputBorder(),
@@ -43,6 +67,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             ),
             const SizedBox(height: 16.0),
             TextFormField(
+              controller: _usernameController,
               decoration: const InputDecoration(
                 labelText: 'Username',
                 border: OutlineInputBorder(),
@@ -51,6 +76,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             ),
             const SizedBox(height: 16.0),
             TextFormField(
+              controller: _passwordController,
               decoration: InputDecoration(
                 labelText: 'Password',
                 border: const OutlineInputBorder(),
@@ -80,6 +106,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             ),
             const SizedBox(height: 16.0),
             TextFormField(
+              controller: _confirmPasswordController,
               decoration: InputDecoration(
                 labelText: 'Confirm Password',
                 border: const OutlineInputBorder(),
@@ -113,9 +140,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               child: FractionallySizedBox(
                 widthFactor: 0.35,
                 child: ElevatedButton(
-                  onPressed: () {
-                    // TODO: Implement registration functionality
-                  },
+                  onPressed: _registerUser,
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all<Color>(
                       const Color(0xFF19B0E7),
@@ -144,7 +169,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const LoginScreen()),
+                          builder: (context) => LoginScreen(apiService: apiService)),
                     );
                   },
                   child: const Text(

@@ -1,11 +1,14 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:stationery_shop/src/services/api_service.dart';
 
-import '../auth/login_screen.dart';
+import 'login_screen.dart';
 
 class SplashScreen extends StatelessWidget {
-  const SplashScreen({super.key});
+  final ApiService apiService;
+
+  const SplashScreen({super.key, required this.apiService});
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +16,7 @@ class SplashScreen extends StatelessWidget {
       const Duration(seconds: 2),
           () => Navigator.of(context).pushReplacement(
         MaterialPageRoute(
-          builder: (BuildContext context) => const LoginScreen(),
+          builder: (BuildContext context) => LoginScreen(apiService: apiService,),
         ),
       ),
     );

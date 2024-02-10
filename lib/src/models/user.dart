@@ -16,7 +16,7 @@ class User {
       'full_name': fullName,
       'username': username,
       'password': password,
-      'confirm_password': confirmPassword,
+      'confirmassword': confirmPassword,
     };
   }
 }

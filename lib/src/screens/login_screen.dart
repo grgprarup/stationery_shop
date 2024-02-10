@@ -1,15 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:stationery_shop/src/auth/register_screen.dart';
+import 'package:stationery_shop/src/screens/register_screen.dart';
+
+import '../services/api_service.dart';
 
 class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+  final ApiService apiService;
+
+  const LoginScreen({super.key, required this.apiService});
 
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  _LoginScreenState createState() => _LoginScreenState(apiService: apiService);
 }
 
 class _LoginScreenState extends State<LoginScreen> {
   bool _isPasswordVisible = false;
+
+  ApiService apiService;
+
+  _LoginScreenState({required this.apiService});
 
   @override
   Widget build(BuildContext context) {
@@ -122,7 +130,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const RegisterScreen()),
+                          builder: (context) => RegisterScreen(apiService: apiService)),
                     );
                   },
                   child: const Text(

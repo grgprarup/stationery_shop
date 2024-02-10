@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:stationery_shop/src/screens/splash_screen.dart';
+import 'package:stationery_shop/src/services/api_service.dart';
 
 void main() {
-  runApp(const MyApp());
+  final apiService = ApiService(baseUrl: 'http://10.0.2.2:5000/api/v1.0');
+  runApp(MyApp(apiService: apiService,));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final ApiService apiService;
+
+  const MyApp({super.key, required this.apiService});
 
   // This widget is the root of your application.
   @override
@@ -16,7 +20,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const SplashScreen(),
+      home: SplashScreen(apiService: apiService,),
     );
   }
 }
