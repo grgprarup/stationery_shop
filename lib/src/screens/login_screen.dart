@@ -32,15 +32,14 @@ class _LoginScreenState extends State<LoginScreen> {
             const Text(
               'Login',
               style: TextStyle(
-                fontSize: 26.0,
+                fontSize: 32.0,
                 fontWeight: FontWeight.bold,
               ),
             ),
             const Text(
               'Please sign in to continue.',
               style: TextStyle(
-                fontSize: 14.0,
-                fontWeight: FontWeight.normal,
+                fontSize: 16.0,
                 color: Color(0xFF7D7D7D),
               ),
             ),
@@ -81,7 +80,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               obscureText: !_isPasswordVisible,
             ),
-            const SizedBox(height: 16.0),
+            const SizedBox(height: 32.0),
             Align(
               alignment: Alignment.centerRight,
               child: FractionallySizedBox(
@@ -99,7 +98,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                   child: const Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       Text('LOGIN'),
                       Icon(Icons.arrow_forward),
@@ -108,7 +107,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
             ),
-            const SizedBox(height: 8.0),
+            const SizedBox(height: 32.0),
             TextButton(
               onPressed: () {
                 // TODO: Implement forgot password functionality
@@ -117,26 +116,31 @@ class _LoginScreenState extends State<LoginScreen> {
                 'Forgot Password?',
                 style: TextStyle(
                   color: Color(0xFF19B0E7),
+                  fontSize: 16.0,
                 ),
               ),
             ),
-            const SizedBox(height: 6.0),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text('Don\'t have an account?'),
+                const Text('Don\'t have an account?',
+                    style: TextStyle(
+                      fontSize: 16.0,
+                    )),
                 TextButton(
                   onPressed: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => RegisterScreen(apiService: apiService)),
+                          builder: (context) =>
+                              RegisterScreen(apiService: apiService)),
                     );
                   },
                   child: const Text(
                     'Sign up',
                     style: TextStyle(
                       color: Color(0xFF19B0E7),
+                      fontSize: 16.0,
                     ),
                   ),
                 ),
