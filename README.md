@@ -1,7 +1,7 @@
 # Stationery Shop
-
-## Introduction
+<p style="text-align: justify;">
 This Flutter application serves as an inventory management system for a stationery shop. It allows users to add, update, and delete items from the inventory, as well as track stock levels and generate reports. The application is built using the Dart language and the Flutter framework, providing a user-friendly interface for easy navigation and management of the stationery shop inventory.
+</p>
 
 ## Getting Started
 ### Prerequisites
@@ -10,74 +10,85 @@ This Flutter application serves as an inventory management system for a statione
 - Android Studio or Intellij IDEA or VS Code
 
 ### Installation
-1. Clone the repository
+#### 1. Clone the repository
     ```bash
     git clone https://github.com/grgprarup/stationery_shop.git
     cd stationery_shop
     ```
-3. Run the application
-    ```bash
-    flutter run
-    ```
-
-
-## Extra Commands
-- To upgrade the Flutter SDK
-    ```bash
-    flutter upgrade
-    ```
-- To check if the Flutter setup is correct
-    ```bash
-    flutter doctor
-    ```
-- To get the flutter packages
+#### 2. Get the flutter packages
     ```bash
     flutter pub get
     ```
-- To check for outdated packages
-    ```bash
-    flutter pub outdated
-    ```
-- To upgrade the flutter packages
-    ```bash
-    flutter pub upgrade
-    ```
-- To upgrade the latest version of the flutter packages
-    ```bash
-    flutter pub outdated --major-versions
-    ```
-- To see the list of devices connected
-    ```bash
-    flutter devices
-    ```
-- To see the list of emulators
-    ```bash
-    flutter emulators
-    ```
-- To run the application on a specific emulator
-    ```bash
-    flutter emulators --launch emulator_id
-    ```
-- To create a new emulator
-    ```bash
-    flutter emulators --create [--name xyz]
-    ```
-- To run the application on a specific device
-    ```bash
-    flutter run -d device_id
-    ```
-- To create a new flutter project from CLI
-    ```bash
-    flutter create project_name
-    ```
-- To run the tests
-    ```bash
-    flutter test
-    ```
-- To check if the Dart setup is correct
-    ```bash
-    dart --version
-    ```
+#### 3. Run the application
+   1. To run the android application on an emulator
+      - Check for existing emulator
+        ```bash
+        flutter emulators
+        ```
+      - If there is no existing emulator then create an emulator
+        ```bash
+        flutter emulators --create [--name xyz]
+        ```
+      - Launch the emulator
+        ```bash
+        flutter emulators --launch emulator_id
+        ```
+      - Run the application
+        ```bash
+        flutter run
+        ```
+   2. To run on the other devices
+      - Check for [existing devices](#6-to-see-the-list-of-devices-connected)
+      - Run the application using the device id
+        ```bash
+        flutter run -d device_id
+        ```
+
+### Extra Commands
+#### 1. To upgrade the Flutter SDK
+```bash
+flutter upgrade
+```
+#### 2. To check if the Flutter setup is correct
+```bash
+flutter doctor
+```
+#### 3. To check for outdated packages
+```bash
+flutter pub outdated
+```
+#### 4. To upgrade the flutter packages
+```bash
+flutter pub upgrade
+```
+#### 5. To upgrade the latest version of the flutter packages
+```bash
+flutter pub outdated --major-versions
+```
+#### 6. To see the list of devices connected
+```bash
+flutter devices
+```
+You will see something like this
+```bash
+Found 3 connected devices:
+  Android SDK built for x86 (mobile) • emulator-5554 • android-x86    • Android 11 (API 30) (emulator)
+  Linux (desktop)                    • linux         • linux-x64      • Ubuntu 23.10 6.5.0-17-generic
+  Chrome (web)                       • chrome        • web-javascript • Google Chrome 121.0.6167.160
+```
+Here, the first one is an android emulator `id = emulator-5534`, the second one is a linux desktop `id = linux`, and the third one is a web browser `id = chrome`. You can run the application on any of these devices by using the `id` of the device.
+#### 7. To create a new flutter project from CLI
+```bash
+flutter create project_name
+```
+#### 8. To run the tests
+```bash
+flutter test
+```
+#### 9. To check if the Dart setup is correct
+```bash
+dart --version
+```
 
 ## Learning Resources
 - [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
