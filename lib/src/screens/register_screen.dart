@@ -29,7 +29,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       TextEditingController();
 
   Future<ApiResponse> _registerUser() async {
-    final user = User(
+    final user = UserRegister(
       fullName: _fullNameController.text,
       username: _usernameController.text,
       password: _passwordController.text,

@@ -1,10 +1,10 @@
-class User {
+class UserRegister {
   final String fullName;
   final String username;
   final String password;
   final String confirmPassword;
 
-  User({
+  UserRegister({
     required this.fullName,
     required this.username,
     required this.password,
@@ -18,5 +18,16 @@ class User {
       'password': password,
       'confirm_password': confirmPassword,
     };
+  }
+}
+
+class UserLogin {
+  final String username;
+  final String password;
+
+  UserLogin({required this.username, required this.password});
+
+  Map<String, dynamic> toJson() {
+    return {'username': username, 'password': password};
   }
 }
