@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:stationery_shop/src/screens/register_screen.dart';
 
+import '../models/user.dart';
 import '../services/api_service.dart';
+import 'home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   final ApiService apiService;
@@ -18,6 +20,43 @@ class _LoginScreenState extends State<LoginScreen> {
   ApiService apiService;
 
   _LoginScreenState({required this.apiService});
+
+  final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
+  Future<ApiResponse> _loginUser() async {
+    final user = UserLogin(
+      username: _usernameController.text,
+      password: _passwordController.text,
+    );
+    ApiResponse apiResponse = await widget.apiService.loginUser(user.username, user.password);
+
+    return apiResponse;
+  }
+
+  _onLoginSuccess(BuildContext context) {
+    _loginUser().then((apiResponse) {
+      if (apiResponse.success) {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => HomeScreen(apiService: apiService),
+          ),
+        );
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(apiResponse.message),
+          ),
+        );
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(apiResponse.message),
+          ),
+        );
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,6 +84,7 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             const SizedBox(height: 48.0),
             TextFormField(
+              controller: _usernameController,
               decoration: const InputDecoration(
                 labelText: 'Username',
                 border: OutlineInputBorder(),
@@ -53,6 +93,7 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             const SizedBox(height: 16.0),
             TextFormField(
+              controller: _passwordController,
               decoration: InputDecoration(
                 labelText: 'Password',
                 border: const OutlineInputBorder(),
@@ -86,9 +127,7 @@ class _LoginScreenState extends State<LoginScreen> {
               child: FractionallySizedBox(
                 widthFactor: 0.35,
                 child: ElevatedButton(
-                  onPressed: () {
-                    // TODO: Implement login functionality
-                  },
+                  onPressed: () => _onLoginSuccess(context),
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all<Color>(
                       const Color(0xFF19B0E7),
