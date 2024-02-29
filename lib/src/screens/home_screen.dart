@@ -41,6 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            // TODO: Add dashboard implementation
             Text(
               'Successfully Logged in',
               style: TextStyle(
