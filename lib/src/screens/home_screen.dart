@@ -6,11 +6,11 @@ import '../widgets/application_bar.dart';
 import '../widgets/nav_drawer.dart';
 
 const _kPages = <String, IconData>{
-  'home': Icons.home,
-  'map': Icons.map,
-  'add': Icons.add,
-  'message': Icons.message,
-  'person': Icons.person,
+  'Home': Icons.home_rounded,
+  'Map': Icons.map_rounded,
+  'Add': Icons.add_rounded,
+  'Message': Icons.message_rounded,
+  'Profile': Icons.person_rounded,
 };
 
 class HomeScreen extends StatefulWidget {
