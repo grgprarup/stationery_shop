@@ -19,57 +19,9 @@ class _NavDrawerState extends State<NavDrawer> {
         children: <Widget>[
           _buildDrawerHeader(
               'Stationery Shop', 'Prarup Gurung', 'grgprarup@gmail.com'),
+          _buildDeveloperContacts(),
           _buildDrawerListTile(
               'Settings', Icons.settings_rounded, null, _onSettings),
-          ExpansionTile(
-            title: const Text('Developer Contacts'),
-            leading: const Icon(Icons.contact_support_rounded),
-            initiallyExpanded: isExpanded,
-            onExpansionChanged: (value) {
-              setState(() {
-                isExpanded = value;
-              });
-            },
-            children: [
-              if (isExpanded)
-                Column(
-                  children: [
-                    ListTile(
-                      title: GestureDetector(
-                        onTap: () {
-                          _makePhoneCall('+977-9841156043');
-                        },
-                        child: const Row(
-                          children: [
-                            Icon(Icons.phone_rounded),
-                            SizedBox(width: 8),
-                            Text(
-                              '+977-9841156043',
-                                style: TextStyle(fontSize: 16, decoration: TextDecoration.underline),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    ListTile(
-                      title: GestureDetector(
-                        onTap: () {
-                          _sendEmail('developer001.sd@gmail.com');
-                        },
-                        child: const Row(
-                          children: [
-                            Icon(Icons.email_rounded),
-                            SizedBox(width: 8),
-                            Text('developer001.sd@gmail.com',
-                            style: TextStyle(fontSize: 16, decoration: TextDecoration.underline)),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-            ],
-          ),
           _buildDrawerListTile(
               'FAQ', Icons.question_mark_rounded, null, _onFAQ),
           _buildDrawerListTile('Logout', Icons.logout_rounded, null, _onLogout),
@@ -90,6 +42,70 @@ class _NavDrawerState extends State<NavDrawer> {
       decoration: const BoxDecoration(
         color: Color(0xFF19B0E7),
       ),
+    );
+  }
+
+  Widget _buildDeveloperContacts() {
+    return ExpansionPanelList(
+      elevation: 1,
+      expandedHeaderPadding: EdgeInsets.zero,
+      expansionCallback: (int index, bool isExpanded) {
+        setState(() {
+          this.isExpanded = isExpanded;
+        });
+      },
+      children: [
+        ExpansionPanel(
+          canTapOnHeader: true,
+          headerBuilder: (BuildContext context, bool isExpanded) {
+            return const ListTile(
+              title: Text('Contact Developer'),
+              leading: Icon(Icons.contact_support_rounded),
+            );
+          },
+          body: Column(
+            children: [
+              ListTile(
+                title: GestureDetector(
+                  onTap: () {
+                    _makePhoneCall('+977-9841156043');
+                  },
+                  child: const Row(
+                    children: [
+                      Icon(Icons.phone_rounded),
+                      SizedBox(width: 8),
+                      Text(
+                        '+977-9841156043',
+                        style: TextStyle(
+                            fontSize: 16,
+                            decoration: TextDecoration.underline),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              ListTile(
+                title: GestureDetector(
+                  onTap: () {
+                    _sendEmail('developer001.sd@gmail.com');
+                  },
+                  child: const Row(
+                    children: [
+                      Icon(Icons.email_rounded),
+                      SizedBox(width: 8),
+                      Text('developer001.sd@gmail.com',
+                          style: TextStyle(
+                              fontSize: 16,
+                              decoration: TextDecoration.underline)),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+          isExpanded: isExpanded,
+        ),
+      ],
     );
   }
 
@@ -126,10 +142,16 @@ class _NavDrawerState extends State<NavDrawer> {
   }
 
   void _onSettings() {
+    setState(() {
+      isExpanded = false;
+    });
     //   TODO: Implement settings functionality
   }
 
   void _onFAQ() {
+    setState(() {
+      isExpanded = false;
+    });
     // TODO: Implement FAQ functionality
   }
 
