@@ -43,11 +43,6 @@ class _LoginScreenState extends State<LoginScreen> {
             builder: (context) => HomeScreen(apiService: apiService),
           ),
         );
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(apiResponse.message),
-          ),
-        );
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
