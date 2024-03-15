@@ -24,7 +24,6 @@ class _NavDrawerState extends State<NavDrawer> {
               'Settings', Icons.settings_rounded, null, _onSettings),
           _buildDrawerListTile(
               'FAQ', Icons.question_mark_rounded, null, _onFAQ),
-          _buildDrawerListTile('Logout', Icons.logout_rounded, null, _onLogout),
         ],
       ),
     );
@@ -153,9 +152,5 @@ class _NavDrawerState extends State<NavDrawer> {
       isExpanded = false;
     });
     // TODO: Implement FAQ functionality
-  }
-
-  void _onLogout() {
-    // TODO: Implement logout functionality
   }
 }
