@@ -9,7 +9,7 @@ const _kPages = <String, IconData>{
   'Home': Icons.home_rounded,
   'Map': Icons.map_rounded,
   'Add': Icons.add_rounded,
-  'Message': Icons.message_rounded,
+  'Notifications': Icons.notifications_rounded,
   'Profile': Icons.person_rounded,
 };
 
@@ -24,6 +24,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   ApiService apiService;
+  int _selectedIndex = 0;
 
   _HomeScreenState({required this.apiService});
 
@@ -37,32 +38,52 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Scaffold(
         appBar: const ApplicationBar(title: 'Dashboard'),
         drawer: const NavDrawer(),
-        body: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Expanded(
-                child: TabBarView(
-                  children: [
-                    for (final icon in _kPages.values) Icon(icon, size: 64),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
+        body: _getBody(),
         bottomNavigationBar: ConvexAppBar.badge(
-          const <int, dynamic>{3: '99+'},
+          const <int, dynamic>{},
+          backgroundColor: const Color(0xFF19B0E7),
+          color: Colors.white,
           style: _tabStyle,
           items: <TabItem>[
             for (final entry in _kPages.entries)
               TabItem(icon: entry.value, title: entry.key),
           ],
-          onTap: (int i) => print('click index=$i'),
+          onTap: (int index) {
+            setState(() {
+              _selectedIndex = index;
+            });
+          },
         ),
       ),
     );
+  }
+
+  Widget _getBody() {
+    switch (_selectedIndex) {
+      case 0:
+        // TODO: Add home screen body
+        return const Center(
+          child: Icon(Icons.home_rounded, size: 64)
+        );
+      case 1:
+        // TODO: Add map screen body
+        return const Center(
+          child: Icon(Icons.map_rounded, size: 64)
+        );
+      case 2:
+        // TODO: Add add screen body
+        return const Center(
+          child: Icon(Icons.add_rounded, size: 64)
+        );
+      case 3:
+        // TODO: Add notifications screen body
+        return const Center(
+          child: Icon(Icons.notifications_rounded, size: 64)
+        );
+      case 4:
+        // TODO: Add profile screen body
+      default:
+        return Container();
+    }
   }
 }
