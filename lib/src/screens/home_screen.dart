@@ -1,5 +1,6 @@
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:stationery_shop/src/screens/user_profile_screen.dart';
 
 import '../services/api_service.dart';
 import '../widgets/application_bar.dart';
@@ -81,7 +82,7 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Icon(Icons.notifications_rounded, size: 64)
         );
       case 4:
-        // TODO: Add profile screen body
+        return const UserProfileScreen();
       default:
         return Container();
     }
