@@ -63,8 +63,8 @@ class _HomeScreenState extends State<HomeScreen> {
     switch (_selectedIndex) {
       case 0:
         // TODO: Add home screen body
-        return const Center(
-          child: Icon(Icons.home_rounded, size: 64)
+        return Center(
+          child: Image.asset('lib/src/assets/images/home.png'),
         );
       case 1:
         // TODO: Add map screen body
@@ -73,13 +73,13 @@ class _HomeScreenState extends State<HomeScreen> {
         );
       case 2:
         // TODO: Add add screen body
-        return const Center(
-          child: Icon(Icons.add_rounded, size: 64)
+        return Center(
+          child: Image.asset('lib/src/assets/images/home.png'),
         );
       case 3:
         // TODO: Add notifications screen body
-        return const Center(
-          child: Icon(Icons.notifications_rounded, size: 64)
+        return Center(
+          child: Image.asset('lib/src/assets/images/notification.png'),
         );
       case 4:
         return const UserProfileScreen();
