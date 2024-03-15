@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:stationery_shop/src/screens/edit_user_profile_screen.dart';
 
 class UserProfileScreen extends StatefulWidget {
   const UserProfileScreen({super.key});
@@ -65,9 +66,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
             ),
             const SizedBox(height: 32),
             ElevatedButton(
-              onPressed: () => {
-                // TODO: Implement edit profile functionality
-              },
+              onPressed: () => const EditUserProfileScreen(),
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color(0xFF19B0E7),
                 foregroundColor: Colors.white,

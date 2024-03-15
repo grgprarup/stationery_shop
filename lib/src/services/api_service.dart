@@ -47,6 +47,33 @@ class ApiService {
     return ApiResponse(success: true, message: 'Login Successful');
   }
 
+
+  Future<ApiResponse> getUser(String userId) async {
+    final response = await _makeRequest(baseUrl, 'users/$userId', 'GET');
+    final Map<String, dynamic> responseData = jsonDecode(response.body);
+
+    if (response.statusCode != 200) {
+      return ApiResponse(success: false, message: responseData['message']);
+    }
+
+    return ApiResponse(success: true, message: 'User retrieved successfully');
+  }
+
+  Future<ApiResponse> updateUser(UserUpdate user) async {
+    final userId = getUserId();
+    final response =
+    await _makeRequest(baseUrl, 'users/${userId}', 'PUT', body: user.toJson());
+
+    final responseMessage =
+    (json.decode(response.body))['message'].toString();
+
+    if (response.statusCode != 201) {
+      return ApiResponse(success: false, message: responseMessage);
+    }
+
+    return ApiResponse(success: true, message: responseMessage);
+  }
+
   Future<http.Response> _makeRequest(
       String baseUrl, String endpoint, String method,
       {Object? body, Encoding? encoding}) async {
