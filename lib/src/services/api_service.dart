@@ -41,6 +41,7 @@ class ApiService {
     }
 
     SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setInt('user_id', responseData['user_id']);
     prefs.setString('access_token', responseData['access_token']);
     prefs.setString('refresh_token', responseData['refresh_token']);
 

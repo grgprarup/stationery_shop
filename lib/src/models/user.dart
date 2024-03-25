@@ -31,3 +31,23 @@ class UserLogin {
     return {'username': username, 'password': password};
   }
 }
+
+class UserUpdate {
+  final String fullName;
+  final String username;
+  final String password;
+
+  UserUpdate({
+    required this.fullName,
+    required this.username,
+    required this.password,
+  });
+
+  Map<String, dynamic> toJson() {
+    return {
+      'full_name': fullName,
+      'username': username,
+      'password': password,
+    };
+  }
+}
