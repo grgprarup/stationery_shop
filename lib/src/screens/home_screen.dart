@@ -82,7 +82,7 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Image.asset('lib/src/assets/images/notification.png'),
         );
       case 4:
-        return const UserProfileScreen();
+        return UserProfileScreen(apiService: apiService);
       default:
         return Container();
     }

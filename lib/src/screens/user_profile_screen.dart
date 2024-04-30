@@ -1,14 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:stationery_shop/src/screens/edit_user_profile_screen.dart';
+import 'package:stationery_shop/src/screens/view_full_user_profile_screen.dart';
+
+import '../services/api_service.dart';
 
 class UserProfileScreen extends StatefulWidget {
-  const UserProfileScreen({super.key});
+  final ApiService apiService;
 
+  const UserProfileScreen({super.key, required this.apiService});
 
   @override
-  _UserProfileScreenState createState() => _UserProfileScreenState();
+  _UserProfileScreenState createState() =>
+      _UserProfileScreenState(apiService: apiService);
 }
 
 class _UserProfileScreenState extends State<UserProfileScreen> {
+  ApiService apiService;
+
+  _UserProfileScreenState({required this.apiService});
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -23,7 +33,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                 const CircleAvatar(
                   radius: 70,
                   backgroundImage:
-                  AssetImage('lib/src/assets/images/avatar.png'),
+                      AssetImage('lib/src/assets/images/avatar.png'),
                 ),
                 Positioned(
                     bottom: 0,
@@ -59,9 +69,8 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                     .bodyMedium
                     ?.apply(color: const Color(0xFF19B0E7), fontWeightDelta: 2),
               ),
-              onPressed: () {
-                // TODO: Implement view full profile functionality
-              },
+              onPressed: () =>
+                  ViewFullUserProfileScreen(apiService: apiService),
             ),
             const SizedBox(height: 32),
             ElevatedButton(
@@ -87,7 +96,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
             const Divider(),
             ListTile(
               leading:
-              const Icon(Icons.settings_rounded, color: Color(0xFF19B0E7)),
+                  const Icon(Icons.settings_rounded, color: Color(0xFF19B0E7)),
               title: Text(
                 'Settings',
                 style: Theme.of(context)
