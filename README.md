@@ -61,11 +61,7 @@ flutter pub outdated
 ```bash
 flutter pub upgrade
 ```
-#### 5. To upgrade the latest version of the flutter packages
-```bash
-flutter pub outdated --major-versions
-```
-#### 6. To see the list of devices connected
+#### 5. To see the list of devices connected
 ```bash
 flutter devices
 ```
@@ -77,15 +73,15 @@ Found 3 connected devices:
   Chrome (web)                       • chrome        • web-javascript • Google Chrome 121.0.6167.160
 ```
 Here, the first one is an android emulator `id = emulator-5534`, the second one is a linux desktop `id = linux`, and the third one is a web browser `id = chrome`. You can run the application on any of these devices by using the `id` of the device.
-#### 7. To create a new flutter project from CLI
+#### 6. To create a new flutter project from CLI
 ```bash
 flutter create project_name
 ```
-#### 8. To run the tests
+#### 7. To run the tests
 ```bash
 flutter test
 ```
-#### 9. To check if the Dart setup is correct
+#### 8. To check if the Dart setup is correct
 ```bash
 dart --version
 ```
