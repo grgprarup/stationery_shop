@@ -85,6 +85,24 @@ flutter test
 ```bash
 dart --version
 ```
+#### 9. To clear the flutter cache
+```bash
+flutter clean
+```
+#### 10. To build the application apk
+```bash
+flutter build apk
+```
+#### 11. To build the application apk for release
+```bash
+flutter build apk --release
+```
+#### 12. To clear the gradle cache
+```bash
+cd android
+./gradlew clean
+```
+
 
 ## Learning Resources
 - [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
