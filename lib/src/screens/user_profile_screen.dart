@@ -1,14 +1,47 @@
 import 'package:flutter/material.dart';
+import 'package:stationery_shop/src/services/api_service.dart';
+import 'login_screen.dart';
 
 class UserProfileScreen extends StatefulWidget {
-  const UserProfileScreen({super.key});
+  const UserProfileScreen({super.key, required this.apiService});
 
+  final ApiService apiService;
 
   @override
-  _UserProfileScreenState createState() => _UserProfileScreenState();
+  _UserProfileScreenState createState() =>
+      _UserProfileScreenState(apiService: apiService);
 }
 
 class _UserProfileScreenState extends State<UserProfileScreen> {
+  ApiService apiService;
+
+  _UserProfileScreenState({required this.apiService});
+
+  Future<ApiResponse> _logoutUser() async {
+    ApiResponse apiResponse = await widget.apiService.logoutUser();
+
+    return apiResponse;
+  }
+
+  _onLogoutSuccess(BuildContext context) {
+    _logoutUser().then((apiResponse) {
+      if (apiResponse.success) {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => LoginScreen(apiService: widget.apiService),
+          ),
+        );
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(apiResponse.message),
+          ),
+        );
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -23,7 +56,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                 const CircleAvatar(
                   radius: 70,
                   backgroundImage:
-                  AssetImage('lib/src/assets/images/avatar.png'),
+                      AssetImage('lib/src/assets/images/avatar.png'),
                 ),
                 Positioned(
                     bottom: 0,
@@ -87,7 +120,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
             const Divider(),
             ListTile(
               leading:
-              const Icon(Icons.settings_rounded, color: Color(0xFF19B0E7)),
+                  const Icon(Icons.settings_rounded, color: Color(0xFF19B0E7)),
               title: Text(
                 'Settings',
                 style: Theme.of(context)
@@ -113,9 +146,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                     .bodyLarge
                     ?.apply(color: Colors.black, fontWeightDelta: 1),
               ),
-              onTap: () => {
-                //   TODO: Implement logout functionality
-              },
+              onTap: () => _onLogoutSuccess(context),
             ),
           ],
         ),

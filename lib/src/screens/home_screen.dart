@@ -68,9 +68,7 @@ class _HomeScreenState extends State<HomeScreen> {
         );
       case 1:
         // TODO: Add map screen body
-        return const Center(
-          child: Icon(Icons.map_rounded, size: 64)
-        );
+        return const Center(child: Icon(Icons.map_rounded, size: 64));
       case 2:
         // TODO: Add add screen body
         return Center(
@@ -82,7 +80,7 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Image.asset('lib/src/assets/images/notification.png'),
         );
       case 4:
-        return const UserProfileScreen();
+        return UserProfileScreen(apiService: apiService);
       default:
         return Container();
     }

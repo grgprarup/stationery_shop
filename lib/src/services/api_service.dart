@@ -17,18 +17,16 @@ class ApiService {
   ApiService({required this.baseUrl});
 
   Future<ApiResponse> registerUser(UserRegister user) async {
+    final response =
+        await _makeRequest(baseUrl, 'users/', 'POST', body: user.toJson());
 
-      final response =
-          await _makeRequest(baseUrl, 'users/', 'POST', body: user.toJson());
+    final responseMessage = (json.decode(response.body))['message'].toString();
 
-      final responseMessage =
-          (json.decode(response.body))['message'].toString();
+    if (response.statusCode != 201) {
+      return ApiResponse(success: false, message: responseMessage);
+    }
 
-      if (response.statusCode != 201) {
-        return ApiResponse(success: false, message: responseMessage);
-      }
-
-      return ApiResponse(success: true, message: responseMessage);
+    return ApiResponse(success: true, message: responseMessage);
   }
 
   Future<ApiResponse> loginUser(String username, String password) async {
@@ -47,12 +45,32 @@ class ApiService {
     return ApiResponse(success: true, message: 'Login Successful');
   }
 
+  Future<ApiResponse> logoutUser() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? accessToken = prefs.getString('access_token');
+    final response = await _makeRequest(baseUrl, 'auth/logout/', 'DELETE',
+        token: accessToken);
+    if (response.statusCode != 204) {
+      return ApiResponse(success: false, message: 'Logout Failed');
+    }
+    prefs.clear();
+    return ApiResponse(success: true, message: 'Successfully Logged Out');
+  }
+
   Future<http.Response> _makeRequest(
       String baseUrl, String endpoint, String method,
-      {Object? body, Encoding? encoding}) async {
+      {Object? body, Encoding? encoding, String? token}) async {
+    Map<String, String> headers = {'Content-Type': 'application/json'};
+    // TODO: use setting headers in standard way
+    if (token != null) {
+      headers = {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer $token',
+      };
+    }
     final httpHelper = HttpHelper(
         fullUrl: '$baseUrl/$endpoint',
-        headers: {'Content-Type': 'application/json'},
+        headers: headers,
         body: jsonEncode(body),
         encoding: encoding);
 
