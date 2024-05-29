@@ -79,6 +79,7 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             const SizedBox(height: 48.0),
             TextFormField(
+              key: const ValueKey('usernameField'),
               controller: _usernameController,
               decoration: const InputDecoration(
                 labelText: 'Username',
@@ -88,6 +89,7 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             const SizedBox(height: 16.0),
             TextFormField(
+              key: const ValueKey('passwordField'),
               controller: _passwordController,
               decoration: InputDecoration(
                 labelText: 'Password',
@@ -132,6 +134,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                   child: const Row(
+                    key: ValueKey('loginButton'),
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       Text('LOGIN'),
@@ -147,6 +150,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 // TODO: Implement forgot password functionality
               },
               child: const Text(
+                key: ValueKey('forgotPasswordButton'),
                 'Forgot Password?',
                 style: TextStyle(
                   color: Color(0xFF19B0E7),
@@ -171,6 +175,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     );
                   },
                   child: const Text(
+                    key: ValueKey('signUpButton'),
                     'Sign up',
                     style: TextStyle(
                       color: Color(0xFF19B0E7),
