@@ -14,17 +14,21 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     Timer(
       const Duration(seconds: 2),
-          () => Navigator.of(context).pushReplacement(
+      () => Navigator.of(context).pushReplacement(
         MaterialPageRoute(
-          builder: (BuildContext context) => LoginScreen(apiService: apiService,),
+          builder: (BuildContext context) => LoginScreen(
+            apiService: apiService,
+          ),
         ),
       ),
     );
 
-    return const Scaffold(
+    return Scaffold(
       body: Center(
-        child: FlutterLogo(
-          size: 150.0,
+        child: Image.asset(
+          'lib/src/assets/images/logo.png',
+          width: MediaQuery.of(context).size.width * 0.7,
+          height: MediaQuery.of(context).size.height * 0.7,
         ),
       ),
     );

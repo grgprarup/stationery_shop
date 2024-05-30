@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.codezero.flutter.stationeryshop.stationery_shop">
    <application
-        android:label="stationery_shop"
+        android:label="Stationery Shop"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher"
         android:enableOnBackInvokedCallback="true">
