@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:stationery_shop/main.dart';
 import 'package:stationery_shop/src/screens/login_screen.dart';
 import 'package:stationery_shop/src/services/api_service.dart';
 
@@ -46,6 +45,17 @@ void main() {
         expect(find.byIcon(Icons.arrow_forward), findsOneWidget);
       });
 
+      testWidgets('login button color', (WidgetTester tester) async {
+        await tester.pumpWidget(app);
+        final ButtonStyle? buttonStyle = tester.widget<ElevatedButton>(find.byType(ElevatedButton)).style;
+        final Color? actualBgColor =
+            (buttonStyle?.backgroundColor)?.resolve(<WidgetState>{});
+        final Color? actualFgColor =
+            (buttonStyle?.foregroundColor)?.resolve(<WidgetState>{});
+        expect(actualBgColor, const Color(0xFF19B0E7));
+        expect(actualFgColor, Colors.white);
+      });
+
       testWidgets('forgot password button', (WidgetTester tester) async {
         await tester.pumpWidget(app);
         expect(find.byType(TextButton), findsNWidgets(2));
@@ -67,7 +77,8 @@ void main() {
     });
 
     group('Login Functionality Tests', () {
-      testWidgets('Valid login navigates to home screen', (WidgetTester tester) async {
+      testWidgets('Valid login navigates to home screen',
+          (WidgetTester tester) async {
         await tester.pumpWidget(app);
 
         await tester.enterText(find.byKey(const Key('usernameField')), 'admin');
