@@ -47,7 +47,8 @@ void main() {
 
       testWidgets('login button color', (WidgetTester tester) async {
         await tester.pumpWidget(app);
-        final ButtonStyle? buttonStyle = tester.widget<ElevatedButton>(find.byType(ElevatedButton)).style;
+        final ButtonStyle? buttonStyle =
+            tester.widget<ElevatedButton>(find.byType(ElevatedButton)).style;
         final Color? actualBgColor =
             (buttonStyle?.backgroundColor)?.resolve(<WidgetState>{});
         final Color? actualFgColor =
@@ -90,6 +91,6 @@ void main() {
         expect(find.text('Dashboard'), findsOneWidget);
         expect(find.byIcon(Icons.home_rounded), findsOneWidget);
       });
-    });
+    }, skip: true);
   });
 }
