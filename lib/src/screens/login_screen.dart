@@ -126,10 +126,10 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: ElevatedButton(
                   onPressed: () => _onLoginSuccess(context),
                   style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all<Color>(
+                    backgroundColor: WidgetStateProperty.all<Color>(
                       const Color(0xFF19B0E7),
                     ),
-                    foregroundColor: MaterialStateProperty.all<Color>(
+                    foregroundColor: WidgetStateProperty.all<Color>(
                       Colors.white,
                     ),
                   ),

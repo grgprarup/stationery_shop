@@ -170,10 +170,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   child: ElevatedButton(
                     onPressed: () => _onRegistrationSuccess(context),
                     style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all<Color>(
+                      backgroundColor: WidgetStateProperty.all<Color>(
                         const Color(0xFF19B0E7),
                       ),
-                      foregroundColor: MaterialStateProperty.all<Color>(
+                      foregroundColor: WidgetStateProperty.all<Color>(
                         Colors.white,
                       ),
                     ),
