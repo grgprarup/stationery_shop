@@ -13,3 +13,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+      - name: Get flutter packages
+        run: flutter pub get
