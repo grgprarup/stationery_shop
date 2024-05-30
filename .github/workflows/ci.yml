@@ -16,3 +16,5 @@ jobs:
       - uses: subosito/flutter-action@v2
       - name: Get flutter packages
         run: flutter pub get
+      - name: Run unit tests
+        run: flutter test test/unit_test.dart
