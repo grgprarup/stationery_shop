@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:stationery_shop/env.dart';
 
 import 'package:stationery_shop/src/screens/login_screen.dart';
 import 'package:stationery_shop/src/services/api_service.dart';
 
 void main() {
   late MaterialApp app;
-  final apiService = ApiService(baseUrl: 'http://192.168.1.70:5000/api/v1.0');
+  const baseUrl = '${Env.apiBaseUrl}:${Env.apiPort}/${Env.apiPath}/${Env.apiVersion}';
+  final apiService = ApiService(baseUrl: baseUrl);
 
   setUp(() {
     app = MaterialApp(home: LoginScreen(apiService: apiService));
