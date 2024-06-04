@@ -20,7 +20,6 @@ jobs:
         run: flutter test test/unit_test.dart
   run-widget-tests:
     runs-on: ubuntu-latest
-    needs: run-unit-tests
     steps:
       - uses: actions/checkout@v4
       - uses: subosito/flutter-action@v2
@@ -28,3 +27,12 @@ jobs:
         run: flutter pub get
       - name: Run widget tests
         run: flutter test test/widget_test.dart
+  run-golden-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+      - name: Get flutter packages
+        run: flutter pub get
+      - name: Run golden tests
+        run: flutter test --tags=golden
