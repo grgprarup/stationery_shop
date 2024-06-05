@@ -49,4 +49,4 @@ jobs:
           api-level: 29
           arch: x86_64
           profile: Nexus 6
-          script: flutter test integration_test --verbose
+          script: flutter test integration_test
