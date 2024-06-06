@@ -1,0 +1,22 @@
+{
+  "name": "tests",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "npx appium --allow-cors",
+    "list-driver": "npx appium driver list --installed",
+    "test": "node wdio.test.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "appium": "^2.6.0"
+  },
+  "devDependencies": {
+    "@appium/images-plugin": "^3.0.7",
+    "appium-uiautomator2-driver": "^3.5.2",
+    "webdriverio": "^8.38.0"
+  }
+}
