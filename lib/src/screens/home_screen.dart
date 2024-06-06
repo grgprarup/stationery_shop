@@ -37,6 +37,7 @@ class _HomeScreenState extends State<HomeScreen> {
       length: 5,
       initialIndex: 0,
       child: Scaffold(
+        key: const ValueKey('dashboard'),
         appBar: const ApplicationBar(title: 'Dashboard'),
         drawer: const NavDrawer(),
         body: _getBody(),
