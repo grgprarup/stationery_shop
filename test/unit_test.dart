@@ -14,7 +14,7 @@ void main() {
       expect(result, 'Password cannot be empty');
     });
 
-    test('returns error when password is empty', () {
+    test('returns error when password is less than 8', () {
       var result = LoginValidator.validatePassword('1');
       expect(result, 'Password must be at least 8 characters long');
     });

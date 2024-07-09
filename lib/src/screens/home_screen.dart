@@ -5,6 +5,9 @@ import 'package:stationery_shop/src/screens/user_profile_screen.dart';
 import '../services/api_service.dart';
 import '../widgets/application_bar.dart';
 import '../widgets/nav_drawer.dart';
+import 'add_product_screen.dart';
+import 'list_product_screen.dart';
+import 'notification_screen.dart';
 
 const _kPages = <String, IconData>{
   'Home': Icons.home_rounded,
@@ -64,21 +67,24 @@ class _HomeScreenState extends State<HomeScreen> {
     switch (_selectedIndex) {
       case 0:
         // TODO: Add home screen body
-        return Center(
-          child: Image.asset('lib/src/assets/images/home.png'),
+        return const Center(
+          child: ProductListScreen(),
+          // child: Image.asset('lib/src/assets/images/home.png'),
         );
       case 1:
         // TODO: Add map screen body
         return const Center(child: Icon(Icons.map_rounded, size: 64));
       case 2:
         // TODO: Add add screen body
-        return Center(
-          child: Image.asset('lib/src/assets/images/home.png'),
+        return const Center(
+          child: AddProductScreen(),
+          // child: Image.asset('lib/src/assets/images/home.png'),
         );
       case 3:
         // TODO: Add notifications screen body
-        return Center(
-          child: Image.asset('lib/src/assets/images/notification.png'),
+        return const Center(
+          child: NotificationScreen(),
+          // child: Image.asset('lib/src/assets/images/notification.png'),
         );
       case 4:
         return UserProfileScreen(apiService: apiService);
