@@ -1,7 +1,16 @@
 # Stationery Shop
 <p style="text-align: justify;">
-This Flutter application serves as an inventory management system for a stationery shop. It allows users to add, update, and delete items from the inventory, as well as track stock levels and generate reports. The application is built using the Dart language and the Flutter framework, providing a user-friendly interface for easy navigation and management of the stationery shop inventory.
+The Stationery Shop Inventory Management System is a Flutter-based application designed to simplify inventory tracking and management for stationery stores. Built with Dart and the Flutter framework, this app provides a clean, intuitive interface that allows users to efficiently manage their stock in real time.
 </p>
+✨ Key Features
+
+* 📦 Add, Update, and Delete Items — Easily manage inventory items with just a few taps.
+
+* 📊 Stock Tracking — Monitor stock levels and stay informed about low or out-of-stock items.
+
+* 📈 Reports Generation — Generate insightful reports to analyze inventory trends and sales performance.
+
+* 🧭 User-Friendly Interface — Navigate smoothly through a modern, responsive, and easy-to-use UI.
 
 ## Getting Started
 ### Prerequisites
